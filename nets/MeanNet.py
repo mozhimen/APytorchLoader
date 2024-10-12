@@ -40,3 +40,14 @@ if __name__ == "__main__":
     torch.save(mean_net.state_dict(), "mean_net.pth")
     # 输出结果：
     # mean is 118.9
+
+# 定义网络模型
+mean_net = MeanNet()
+# 加载之前保存的网络参数
+mean_net.load_state_dict(torch.load("mean_net.pth", map_location=device))
+# 将网络切换到eval模式
+mean_net.eval()
+# 构建用于追踪的输入
+x = torch.rand(1, 3, 256, 256)
+traced_script_module = torch.jit.trace(func=mean_net, example_inputs=x)
+traced_script_module.save("mean_net.pt")
