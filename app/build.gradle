@@ -30,10 +30,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation project(':SwiftKit:basick')
+    implementation project(':SwiftKit:bindk')
     implementation project(':torchloader')
 
     testImplementation 'junit:junit:4.13.2'
