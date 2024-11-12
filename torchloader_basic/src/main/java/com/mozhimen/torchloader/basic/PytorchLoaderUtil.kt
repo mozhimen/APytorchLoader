@@ -1,7 +1,7 @@
-package com.mozhimen.torchloader.utils
+package com.mozhimen.torchloader.basic
 
 import android.content.Context
-import com.mozhimen.basick.utilk.kotlin.UtilKStrAsset
+import com.mozhimen.kotlin.utilk.kotlin.strAssetName2file_use
 import java.io.File
 
 /**
@@ -21,6 +21,6 @@ object PytorchLoaderUtil {
         val file = File(context.filesDir, assetName)
         if (file.exists() && file.length() > 0)
             return file.absolutePath
-        return UtilKStrAsset.strAssetName2file(assetName, file.absolutePath, bufferSize = 4 * 1024)?.absolutePath
+        return assetName.strAssetName2file_use(file.absolutePath, bufferSize = 4 * 1024)?.absolutePath
     }
 }

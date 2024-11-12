@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "APytorchLoader"
 include ':app'
-include ':torchloader'
+include ':torchloader_lite'
 include ':imageclassifier'
 include ':imageclassifier_test'
 //SwiftKit
@@ -34,3 +34,5 @@ include ':KUtilKit'
 project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
 include ':KUtilKit:utilk_android'
 include ':KUtilKit:utilk_kotlin'
+include ':torchloader'
+include ':torchloader_basic'

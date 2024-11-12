@@ -3,7 +3,7 @@ package com.mozhimen.torchloader.imageclassifier
 import android.graphics.Bitmap
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.torchloader.utils.PytorchLoaderUtil
+import com.mozhimen.proguardk.torchloader.basic.PytorchLoaderUtil
 import org.pytorch.IValue
 import org.pytorch.LiteModuleLoader
 import org.pytorch.MemoryFormat
@@ -31,7 +31,7 @@ class PytorchImageClassifier(modelPath: String) : BaseUtilK() {
     ////////////////////////////////////////////////////////////////////
 
     init {
-        _module = LiteModuleLoader.load(PytorchLoaderUtil.strAssetModelName2file(_context, modelPath /*"model.pt"*/))
+        _module = LiteModuleLoader.load(com.mozhimen.proguardk.torchloader.basic.PytorchLoaderUtil.strAssetModelName2file(_context, modelPath /*"model.pt"*/))
     }
 
     ////////////////////////////////////////////////////////////////////

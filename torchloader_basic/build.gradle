@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.torchloader'
+    namespace 'com.mozhimen.torchloader.basic'
     compileSdk 34
 
     defaultConfig {
@@ -30,9 +30,7 @@ android {
 }
 
 dependencies {
-    api project(project.path.replace(project.name,'')+':torchloader_basic')
-    api 'org.pytorch:pytorch_android:1.10.0'
-    api 'org.pytorch:pytorch_android_torchvision:1.10.0'
+    implementation project(':KUtilKit:utilk_android')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

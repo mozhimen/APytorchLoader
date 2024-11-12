@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.mozhimen.torchloder.test", appContext.packageName)
+        assertEquals("com.mozhimen.torchloader.test", appContext.packageName)
     }
 }
