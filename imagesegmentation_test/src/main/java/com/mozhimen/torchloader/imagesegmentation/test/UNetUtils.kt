@@ -1,4 +1,4 @@
-package com.mozhimen.torchloader.test
+package com.mozhimen.torchloader.imagesegmentation.test
 
 import android.app.Activity
 import android.graphics.Bitmap
@@ -16,7 +16,7 @@ import com.mozhimen.kotlin.utilk.android.graphics.UtilKBitmap
  * @Version 1.0
  */
 
-object MeanNetUtils {
+object UNetUtils {
     /**
      * @param activity 活动
      * @param requestCode 请求码

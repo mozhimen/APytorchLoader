@@ -2,31 +2,22 @@ package com.mozhimen.torchloader.test
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
-import com.mozhimen.torchloader.test.databinding.ActivityMeanNetBinding
 import com.mozhimen.bindk.bases.viewbinding.activity.BaseActivityVB
-import com.mozhimen.kotlin.utilk.android.graphics.UtilKBitmap
-import com.mozhimen.kotlin.utilk.android.graphics.UtilKBitmapFactory
 import com.mozhimen.kotlin.utilk.android.net.uri2strFilePathName
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.kotlin.utilk.kotlin.UtilKStrPath
 import com.mozhimen.kotlin.utilk.kotlin.createFile
+import com.mozhimen.kotlin.utilk.kotlin.strFilePath2bitmapAny_use_ofInputStream
 import com.mozhimen.kotlin.utilk.kotlin.strFilePath2uri
 import com.mozhimen.torchloader.basic.PytorchLoaderUtil
+import com.mozhimen.torchloader.test.databinding.ActivityMeannetBinding
 import org.pytorch.IValue
 import org.pytorch.Module
 import org.pytorch.torchvision.TensorImageUtils
-import java.io.BufferedInputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
 
-class MeanNetActivity : BaseActivityVB<ActivityMeanNetBinding>() {
+class MeanNetActivity : BaseActivityVB<ActivityMeannetBinding>() {
     companion object {
         const val START_CAMERA_CODE: Int = 1111// 开启相机和调用相册的请求码
         const val START_ALBUM_CODE: Int = 1112
@@ -93,32 +84,32 @@ class MeanNetActivity : BaseActivityVB<ActivityMeanNetBinding>() {
 
     /////////////////////////////////////////////////////////////////////////
 
-    private fun saveImage(bmp: Bitmap, quality: Int): String? {
-        val appDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) ?: return null
-        val fileName = System.currentTimeMillis().toString() + ".jpg"
-        val file = File(appDir, fileName)
-        var fos: FileOutputStream? = null
-
-        try {
-            fos = FileOutputStream(file)
-            bmp.compress(Bitmap.CompressFormat.JPEG, quality, fos)
-            fos.flush()
-            return file.absolutePath
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }
-        return null
-    }
+//    private fun saveImage(bmp: Bitmap, quality: Int): String? {
+//        val appDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) ?: return null
+//        val fileName = System.currentTimeMillis().toString() + ".jpg"
+//        val file = File(appDir, fileName)
+//        var fos: FileOutputStream? = null
+//
+//        try {
+//            fos = FileOutputStream(file)
+//            bmp.compress(Bitmap.CompressFormat.JPEG, quality, fos)
+//            fos.flush()
+//            return file.absolutePath
+//        } catch (e: FileNotFoundException) {
+//            e.printStackTrace()
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        } finally {
+//            if (fos != null) {
+//                try {
+//                    fos.close()
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
+//        return null
+//    }
 
     private fun predictMean(imagePath: String) {
         // 设置输入尺寸，和python代码中的设定保持一致
@@ -137,10 +128,8 @@ class MeanNetActivity : BaseActivityVB<ActivityMeanNetBinding>() {
         }
         // 获取输入图像，并进行resize操作，使它符合设定的输入图像尺寸
         try {
-            val bis = BufferedInputStream(FileInputStream(imagePath))
-            bmp = UtilKBitmap.get(bis)
+            bmp = imagePath.strFilePath2bitmapAny_use_ofInputStream()?:return// UtilKBitmap.get(bis)
             scaledBmp = Bitmap.createScaledBitmap(bmp, inDims[0], inDims[1], true)
-            bis.close()
         } catch (e: Exception) {
             Log.d(TAG, "can not read bmp")
         }
