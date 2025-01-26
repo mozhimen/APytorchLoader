@@ -1,0 +1,3 @@
+-dontwarn javax.annotation.Nullable
+-keep class org.pytorch.** { *; }
+-keep class com.facebook.jni.** { *; }

@@ -39,8 +39,8 @@ android {
 }
 
 dependencies {
-    implementation project(':SwiftKit:basick')
-    implementation project(':SwiftKit:bindk')
+    implementation project(':ASwiftKit:basick')
+    implementation project(':ASwiftKit:bindk')
     implementation project(':torchloader')
 
     testImplementation 'junit:junit:4.13.2'
