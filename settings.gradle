@@ -26,7 +26,7 @@ include ':torchloader_lite'
 include ':basic'
 include ':imageclassifier'
 include ':imageclassifier:test'
-include ':imagesegmentation_test'
+include ':imagesegmentation:test'
 //ALibKit_Google
 include ':ALibKit_Google'
 project(':ALibKit_Google').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Google")
@@ -51,9 +51,10 @@ include ':KUtilKit:kotlin'
 include ':ASwiftKit'
 project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
 include ':ASwiftKit:basick'
-include ':ASwiftKit:bindk'
-//AManifestKit_XXPermissions
-include ':AManifestKit_XXPermissions'
-project(':AManifestKit_XXPermissions').projectDir = new File("D:\\WorkSpace\\GitHub\\AManifestKit_XXPermissions")
-include ':AManifestKit_XXPermissions:manifestk_xxpermissions'
-include ':AManifestKit_XXPermissions:library'
+include ':ASwiftKit:xmlk'
+include ':ASwiftKit:uik:databinding'
+//APermissionKit_XXPermissions
+include ':APermissionKit_XXPermissions'
+project(':APermissionKit_XXPermissions').projectDir = new File("D:\\WorkSpace\\GitHub\\APermissionKit_XXPermissions")
+include ':APermissionKit_XXPermissions:permissionk_xxpermissions'
+include ':APermissionKit_XXPermissions:library'
