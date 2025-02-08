@@ -32,8 +32,8 @@ android {
 
 dependencies {
     api project(project.path.replace(project.name,'')+':basic')
-    api 'org.pytorch:pytorch_android:1.10.0'
-    api 'org.pytorch:pytorch_android_torchvision:1.10.0'
+    api 'org.pytorch:pytorch_android:1.13.1'
+    api 'org.pytorch:pytorch_android_torchvision:1.13.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
